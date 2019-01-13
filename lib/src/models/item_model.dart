@@ -17,14 +17,14 @@ class ItemModel {
 
   ItemModel.fromJson(Map<String, dynamic> parsedJson)
       : id = parsedJson['id'],
-        deleted = parsedJson['deleted'],
+        deleted = parsedJson['deleted'] ?? false,
         type = parsedJson['type'],
         by = parsedJson['by'],
         time = parsedJson['time'],
-        text = parsedJson['text'],
-        dead = parsedJson['dead'],
+        text = parsedJson['text'] ?? '',
+        dead = parsedJson['dead'] ?? false,
         parent = parsedJson['parent'],
-        kids = parsedJson['kids'],
+        kids = parsedJson['kids'] ?? [],
         url = parsedJson['url'],
         score = parsedJson['score'],
         title = parsedJson['title'],
@@ -38,8 +38,8 @@ class ItemModel {
         time = parsedJson['time'],
         text = parsedJson['text'],
         dead = parsedJson['dead'] == 1,
-        parent = jsonDecode(parsedJson['parent']),
-        kids = parsedJson['kids'],
+        parent = parsedJson['parent'],
+        kids = jsonDecode(parsedJson['kids']),
         url = parsedJson['url'],
         score = parsedJson['score'],
         title = parsedJson['title'],
@@ -51,6 +51,7 @@ class ItemModel {
       "type": type,
       "by": by,
       "time": time,
+      "text": text,
       "parent": parent,
       "url": url,
       "score": score,
@@ -58,7 +59,7 @@ class ItemModel {
       "descendants": descendants,
       "dead": dead ? 1 : 0,
       "deleted": deleted ? 1 : 0,
-      "kids": jsonEncode(kids)
+      "kids": jsonEncode(kids),
     };
   }
 }
