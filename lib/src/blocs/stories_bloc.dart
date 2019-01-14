@@ -23,10 +23,6 @@ class StoriesBloc {
   fetchTopIds() async {
     final ids = await _repository.fetchTopIds();
     _topIds.sink.add(ids);
-
-    for (int id in ids) {
-      fetchItem(id);
-    }
   }
 
   clearCache() {
