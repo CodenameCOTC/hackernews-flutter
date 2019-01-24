@@ -22,7 +22,7 @@ class Comment extends StatelessWidget {
         final children = <Widget>[
           ListTile(
             title: buildText(item),
-            subtitle: item.by == "" ? Text("Deleted") : Text(item.by),
+            subtitle: item.by == null ? Text("Deleted") : Text(item.by),
             contentPadding: EdgeInsets.only(
               right: 16.0,
               left: (depth + 1) * 16.0,
